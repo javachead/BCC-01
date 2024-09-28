@@ -1,9 +1,4 @@
-
-/*
-1.validOperation変数をそれぞれ用意
-2.「 if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) 」を
-Setを用いて簡潔に判定できるように修正
-*/
+package org.example;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,7 +6,7 @@ import java.util.Set;
 
 public class Main {
 
-    private static final Set<String> VALID_OPERATORS = Set.of("+", "-", "*", "/");
+    private static final Set<String> VALID_OPERATORS = Set.of("+", "-", "*", "/");  // 演算子をSetとして定義
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +26,7 @@ public class Main {
                 validFirstNumber = true;
             } catch (InputMismatchException e) {
                 System.out.println("無効な数字が入力されました。もう一度入力してください。");
-                scanner.next();  // 入力をクリア
+                scanner.next();
             }
         }
 
@@ -46,7 +41,6 @@ public class Main {
             }
         }
 
-        // 2番目の数字の入力
         while (!validSecondNumber) {
             try {
                 System.out.print("2番目の数字を入力してください: ");
@@ -66,21 +60,12 @@ public class Main {
 
         int result = 0;
         switch (operator) {
-            case "+":
-                result = number1 + number2;
-                break;
-            case "-":
-                result = number1 - number2;
-                break;
-            case "*":
-                result = number1 * number2;
-                break;
-            case "/":
-                result = number1 / number2;
-                break;
+            case "+" -> result = number1 + number2;
+            case "-" -> result = number1 - number2;
+            case "*" -> result = number1 * number2;
+            case "/" -> result = number1 / number2;
         }
 
-        // 計算結果を表示
         System.out.println("計算結果: " + number1 + " " + operator + " " + number2 + " = " + result);
 
         scanner.close();
